@@ -43,18 +43,10 @@ body {
 a {
   color: inherit;
   text-decoration: inherit;
-  cursor: none !important;
 }
 
 a:hover {
   color: var(--accentColor);
-}
-
-/* Hide default cursor globally */
-body,
-html,
-* {
-  cursor: none !important;
 }
 
 main {
