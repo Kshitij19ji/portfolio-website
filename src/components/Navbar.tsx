@@ -11,18 +11,22 @@ export let smoother: ScrollSmoother;
 
 const Navbar = () => {
   useEffect(() => {
-    smoother = ScrollSmoother.create({
-      wrapper: "#smooth-wrapper",
-      content: "#smooth-content",
-      smooth: 1.7,
-      speed: 1.7,
-      effects: true,
-      autoResize: true,
-      ignoreMobileResize: true,
-    });
+    let isMobile = window.innerWidth <= 1024;
+    
+    if (!isMobile) {
+      smoother = ScrollSmoother.create({
+        wrapper: "#smooth-wrapper",
+        content: "#smooth-content",
+        smooth: 1.7,
+        speed: 1.7,
+        effects: true,
+        autoResize: true,
+        ignoreMobileResize: true,
+      });
 
-    smoother.scrollTop(0);
-    smoother.paused(true);
+      smoother.scrollTop(0);
+      smoother.paused(true);
+    }
 
     let links = document.querySelectorAll(".header ul a");
     links.forEach((elem) => {
@@ -32,29 +36,33 @@ const Navbar = () => {
         let section = currentTarget.getAttribute("data-href");
 
         // Only prevent default and scroll if it's an internal section link
-        if (section && window.innerWidth > 1024) {
+        if (section && !isMobile) {
           e.preventDefault();
-          smoother.scrollTo(section, true, "top top");
+          if (smoother) smoother.scrollTo(section, true, "top top");
         }
       });
     });
     window.addEventListener("resize", () => {
-      ScrollSmoother.refresh(true);
+      if (!isMobile && smoother) {
+        ScrollSmoother.refresh(true);
+      }
     });
   }, []);
   return (
     <>
       <div className="header">
-        <a href="/#" className="navbar-title" data-cursor="disable">
-          Kshitij19ji
-        </a>
-        <a
-          href="mailto:kshitijsinha261@gmail.com"
-          className="navbar-connect"
-          data-cursor="disable"
-        >
-          kshitijsinha261@gmail.com
-        </a>
+        <div className="navbar-left">
+          <a href="/#" className="navbar-title" data-cursor="disable">
+            Kshitij19ji
+          </a>
+          <a
+            href="mailto:kshitijsinha261@gmail.com"
+            className="navbar-connect"
+            data-cursor="disable"
+          >
+            kshitijsinha261@gmail.com
+          </a>
+        </div>
         <ul>
           <li>
             <a data-href="#about" href="#about">

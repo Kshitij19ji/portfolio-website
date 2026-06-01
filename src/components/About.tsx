@@ -4,10 +4,6 @@ const About = () => {
   return (
     <div className="about-section" id="about">
       <div className="about-image-container">
-        <div className="about-image-wrapper">
-          <img src="/profile.jpg" alt="Kshitij Sinha" className="about-image" />
-          <div className="about-image-glow"></div>
-        </div>
       </div>
       <div className="about-me">
         <h3 className="title">About Me</h3>
