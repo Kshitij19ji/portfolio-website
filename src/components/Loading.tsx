@@ -64,6 +64,12 @@ const Loading = ({ percent }: { percent: number }) => {
     }
 
     const animate = () => {
+      // Check if loading is complete to save battery/CPU and prevent lag
+      const loadingScreen = document.querySelector(".loading-screen");
+      if (loadingScreen && loadingScreen.classList.contains("loading-screen-exit")) {
+        return;
+      }
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach((p, i) => {
@@ -230,18 +236,18 @@ export const setProgress = (setLoading: (value: number) => void) => {
 
   let interval = setInterval(() => {
     if (percent <= 50) {
-      let rand = Math.round(Math.random() * 5);
+      let rand = Math.round(Math.random() * 15);
       percent = percent + rand;
       setLoading(percent);
     } else {
       clearInterval(interval);
       interval = setInterval(() => {
-        percent = percent + Math.round(Math.random());
+        percent = percent + Math.round(Math.random() * 15);
         setLoading(percent);
         if (percent > 91) {
           clearInterval(interval);
         }
-      }, 2000);
+      }, 150);
     }
   }, 100);
 
