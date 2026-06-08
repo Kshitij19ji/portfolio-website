@@ -296,8 +296,8 @@
     width: 100%;
     border-right: none;
     border-bottom: 1px solid #363636;
-    padding-left: 0;
-    padding-right: 0;
+    padding: 30px 10px;
+    gap: 30px;
   }
 
   .work-flex .work-box:nth-child(even) {
