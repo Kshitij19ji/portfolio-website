@@ -8,6 +8,9 @@ gsap.registerPlugin(useGSAP);
 
 const Work = () => {
   useGSAP(() => {
+    let isMobile = window.innerWidth <= 1024;
+    if (isMobile) return;
+
     let translateX: number = 0;
 
     function setTranslateX() {
