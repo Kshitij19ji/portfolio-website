@@ -27,13 +27,27 @@ const Scene = () => {
       const aspect = container.width / container.height;
       const scene = sceneRef.current;
 
+      const isMobile = window.innerWidth <= 1024;
+      if (isMobile) {
+        let progress = setProgress((value) => setLoading(value));
+        let count = 0;
+        const interval = setInterval(() => {
+          count += 20;
+          progress.p(count);
+          if (count >= 100) {
+            clearInterval(interval);
+            progress.loaded();
+          }
+        }, 100);
+        return;
+      }
+
       const renderer = new THREE.WebGLRenderer({
         alpha: true,
         antialias: true,
       });
-      const isMobile = window.innerWidth <= 1024;
       renderer.setSize(container.width, container.height);
-      renderer.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio, 1.5));
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1;
       canvasDiv.current.appendChild(renderer.domElement);
