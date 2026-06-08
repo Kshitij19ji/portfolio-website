@@ -133,15 +133,19 @@ export function setCharTimeline(
 }
 
 export function setAllTimeline() {
+  const isMobile = window.innerWidth <= 1024;
+  
   const careerTimeline = gsap.timeline({
     scrollTrigger: {
       trigger: ".career-section",
-      start: "top 30%",
+      start: "top 50%",
       end: "100% center",
-      scrub: true,
+      scrub: isMobile ? false : true,
+      toggleActions: "play none none reverse",
       invalidateOnRefresh: true,
     },
   });
+
   careerTimeline
     .fromTo(
       ".career-timeline",
@@ -149,7 +153,6 @@ export function setAllTimeline() {
       { maxHeight: "100%", duration: 0.5 },
       0
     )
-
     .fromTo(
       ".career-timeline",
       { opacity: 0 },
@@ -173,7 +176,7 @@ export function setAllTimeline() {
       0
     );
 
-  if (window.innerWidth > 1024) {
+  if (!isMobile) {
     careerTimeline.fromTo(
       ".career-section",
       { y: 0 },
