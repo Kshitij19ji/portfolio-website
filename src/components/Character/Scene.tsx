@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+// Bypass git permission error
 import * as THREE from "three";
 import setCharacter from "./utils/character";
 import setLighting from "./utils/lighting";
@@ -30,15 +31,11 @@ const Scene = () => {
       const isMobile = window.innerWidth <= 1024;
       if (isMobile) {
         let progress = setProgress((value) => setLoading(value));
-        let count = 0;
-        const interval = setInterval(() => {
-          count += 20;
-          progress.p(count);
-          if (count >= 100) {
-            clearInterval(interval);
-            progress.loaded();
-          }
-        }, 100);
+        setTimeout(() => {
+          progress.loaded().then(() => {
+             // Let the loading screen exit naturally
+          });
+        }, 1500);
         return;
       }
 
