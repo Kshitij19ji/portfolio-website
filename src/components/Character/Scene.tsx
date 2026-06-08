@@ -169,13 +169,29 @@ const Scene = () => {
     }
   }, []);
 
+  const isMobileView = typeof window !== "undefined" && window.innerWidth <= 1024;
+
   return (
     <>
       <div className="character-container">
-        <div className="character-model" ref={canvasDiv}>
-          <div className="character-rim"></div>
-          <div className="character-hover" ref={hoverDivRef}></div>
-        </div>
+        {isMobileView ? (
+          <div className="character-mobile-fallback">
+            <div className="character-mobile-glow"></div>
+            <img
+              src="/profile.webp"
+              alt="Kshitij Sinha"
+              className="character-mobile-img"
+              width={300}
+              height={400}
+              loading="eager"
+            />
+          </div>
+        ) : (
+          <div className="character-model" ref={canvasDiv}>
+            <div className="character-rim"></div>
+            <div className="character-hover" ref={hoverDivRef}></div>
+          </div>
+        )}
       </div>
     </>
   );

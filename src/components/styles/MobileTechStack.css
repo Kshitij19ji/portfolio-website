@@ -1,0 +1,120 @@
+/* Mobile Tech Stack — CSS Floating Balls Arena */
+
+.mobile-techstack {
+  width: 100%;
+  padding: 50px 20px 60px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-techstack-title {
+  font-size: clamp(36px, 10vw, 56px);
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  margin: 0 0 40px 0;
+  width: 100%;
+}
+
+.mobile-techstack-title span {
+  background: linear-gradient(90deg, #22d3ee, #a5f3fc);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ─── Floating balls arena ─── */
+.mobile-balls-arena {
+  width: 100%;
+  max-width: 500px;
+  min-height: 320px;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.mobile-skill-ball {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 22px;
+  border-radius: 50px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: default;
+  animation: mobileBallFloat var(--duration, 3.5s) ease-in-out infinite alternate;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3),
+              0 0 8px currentColor;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mobile-skill-ball:active {
+  transform: scale(1.15) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 20px currentColor !important;
+}
+
+@keyframes mobileBallFloat {
+  0% {
+    transform: translate(0px, 0px) rotate(-1deg);
+  }
+  100% {
+    transform: translate(var(--tx, 10px), var(--ty, -15px)) rotate(1deg);
+  }
+}
+
+/* ─── Scrolling marquee strip ─── */
+.mobile-techstack-marquee-wrap {
+  width: 100vw;
+  overflow: hidden;
+  margin-top: 30px;
+  position: relative;
+}
+
+.mobile-techstack-marquee {
+  display: flex;
+  width: max-content;
+  gap: 16px;
+  padding: 8px 0;
+  animation: mobileMarqueeScroll 30s linear infinite;
+}
+
+.mobile-techstack-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@keyframes mobileMarqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Disable heavy animation on reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .mobile-skill-ball {
+    animation: none !important;
+  }
+  .mobile-techstack-marquee {
+    animation: none !important;
+  }
+}

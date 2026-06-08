@@ -395,3 +395,45 @@ h2.landing-info-h2 {
     font-size: 75px;
   }
 }
+
+/* ─── Mobile 3D Model Fallback Image ─── */
+.character-mobile-fallback {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  pointer-events: none;
+}
+
+.character-mobile-img {
+  position: relative;
+  z-index: 2;
+  max-height: 320px;
+  width: auto;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 0 0 0 0;
+  filter: drop-shadow(0 0 30px rgba(34, 211, 238, 0.25));
+}
+
+.character-mobile-glow {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(ellipse, rgba(196, 129, 255, 0.5) 0%, rgba(34, 211, 238, 0.2) 50%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(20px);
+  z-index: 1;
+  animation: mobileGlowPulse 3s ease-in-out infinite;
+}
+
+@keyframes mobileGlowPulse {
+  0%, 100% { opacity: 0.7; transform: translateX(-50%) scale(1); }
+  50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+}

@@ -9,14 +9,8 @@ import WhatIDo from "./WhatIDo";
 import Work from "./Work";
 import setSplitText from "./utils/splitText";
 import Marquee from "./Marquee";
-import SkillMarquee from "./SkillMarquee";
+import MobileTechStack from "./MobileTechStack";
 const TechStack = lazy(() => import("./TechStack"));
-
-const skills = [
-  "Python", "PyTorch", "Flask", "Flutter", "Firebase",
-  "MySQL", "Dart", "NumPy", "Pandas", "React",
-  "Next.js", "C++", "SQL", "HTML", "Git"
-];
 
 const MainContainer = ({ children }: PropsWithChildren) => {
   const [isDesktopView, setIsDesktopView] = useState<boolean>(
@@ -53,7 +47,7 @@ const MainContainer = ({ children }: PropsWithChildren) => {
                 <TechStack />
               </Suspense>
             ) : (
-              <SkillMarquee skills={skills} />
+              <MobileTechStack />
             )}
             <Contact />
             <Marquee />
