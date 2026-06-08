@@ -12,6 +12,12 @@ import Marquee from "./Marquee";
 import SkillMarquee from "./SkillMarquee";
 const TechStack = lazy(() => import("./TechStack"));
 
+const skills = [
+  "Python", "PyTorch", "Flask", "Flutter", "Firebase",
+  "MySQL", "Dart", "NumPy", "Pandas", "React",
+  "Next.js", "C++", "SQL", "HTML", "Git"
+];
+
 const MainContainer = ({ children }: PropsWithChildren) => {
   const [isDesktopView, setIsDesktopView] = useState<boolean>(
     window.innerWidth > 1024
@@ -47,7 +53,7 @@ const MainContainer = ({ children }: PropsWithChildren) => {
                 <TechStack />
               </Suspense>
             ) : (
-              <SkillMarquee />
+              <SkillMarquee skills={skills} />
             )}
             <Contact />
             <Marquee />

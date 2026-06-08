@@ -274,6 +274,7 @@
   .work-section {
     height: auto;
     overflow: visible;
+    will-change: auto !important;
   }
 
   .work-container {

@@ -12,6 +12,22 @@ export function initialFX() {
     delay: 1,
   });
 
+  const isMobile = window.innerWidth <= 1024;
+  if (isMobile) {
+    gsap.fromTo(
+      [".landing-info h3", ".landing-intro h2", ".landing-intro h1", ".header", ".icons-section", ".nav-fade"],
+      { opacity: 0, y: 15 },
+      {
+        opacity: 1,
+        duration: 0.8,
+        ease: "power2.out",
+        y: 0,
+        stagger: 0.1,
+      }
+    );
+    return;
+  }
+
   var landingText = new SplitText(
     [".landing-info h3", ".landing-intro h2", ".landing-intro h1"],
     {

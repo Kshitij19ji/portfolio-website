@@ -783,3 +783,16 @@
   .loading-header { padding: 35px 0px; }
   .loader-title { font-size: 18px; }
 }
+
+@media only screen and (max-width: 1024px) {
+  .loader-profile-card {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(8, 20, 35, 0.95) !important;
+  }
+  .loader-degree-badge {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(34, 211, 238, 0.12) !important;
+  }
+}

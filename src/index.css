@@ -131,3 +131,51 @@ body {
     font-size: 40px;
   }
 }
+
+/* prefers-reduced-motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 0.01s !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+}
+
+/* Aggressive mobile animation/transition disabling for smoothness */
+@media only screen and (max-width: 1024px) {
+  /* Disable heavy hover scaling and translation offsets */
+  .work-box:hover, 
+  .about-image-wrapper:hover, 
+  .navbar-resume-btn:hover, 
+  .terminal-toggle-btn:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Disable continuous rotation/shimmer animations during boot */
+  .loader-card-border-ring,
+  .loader-profile-ring {
+    animation: none !important;
+  }
+
+  /* Force display text directly instead of fading in line by line */
+  .boot-line {
+    animation: none !important;
+    opacity: 0.75 !important;
+    transform: none !important;
+  }
+
+  .loader-profile-card {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .loader-degree-badge {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}

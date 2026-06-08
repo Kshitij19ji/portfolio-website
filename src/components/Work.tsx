@@ -62,21 +62,27 @@ const Work = () => {
               category: "Autonomous Drones",
               description: "Developed an autonomous drone navigation system for GPS-denied environments using Lazy Theta* path planning and real-time SLAM. Implemented 9-direction obstacle avoidance, autonomous replanning, and PID-based flight control. Designed an interactive 3D dashboard for real-time path visualization and telemetry.",
               tools: "Python, Flask, Webots, SLAM, Lazy Theta*, PID Control, LiDAR, Three.js",
-              image: "/images/autonav.png"
+              image: "/images/autonav.webp",
+              width: 1024,
+              height: 471
             },
             {
               name: "Inventory Management System",
               category: "University Services",
               description: "Designed and developed an inventory management system to improve selection, tracking, and documentation of stationery items across university facilities. Facilitated user ability to select multiple inventory items and automatically generate PDF reports.",
               tools: "Dart language (Flutter), Firebase, MySQL",
-              image: "/images/invi.jpg"
+              image: "/images/invi.webp",
+              width: 582,
+              height: 1024
             },
             {
               name: "AI based Sketch-to-UI",
               category: "AI Project",
               description: "Developed an AI-powered system using Gemini Vision to convert hand-drawn sketches or design mockups into functional web interfaces automatically. Designed a multi-agent workflow to handle UI generation, backend logic, and code refinement with live preview and ZIP exports.",
               tools: "Next.js, React, Tailwind CSS, FastAPI, Python, Gemini Vision API, Pillow",
-              image: "/images/sketch2ui.png"
+              image: "/images/sketch2ui.webp",
+              width: 1024,
+              height: 466
             }
           ].map((project, index) => {
             const tagColors = [
@@ -127,7 +133,7 @@ const Work = () => {
                     })}
                   </div>
                 </div>
-                <WorkImage image={project.image} alt={project.name} />
+                <WorkImage image={project.image} alt={project.name} width={project.width} height={project.height} />
               </div>
             )
           })}

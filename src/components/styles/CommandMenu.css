@@ -155,3 +155,22 @@
     color: rgba(255, 255, 255, 0.4);
     font-size: 14px;
 }
+
+@media only screen and (max-width: 1024px) {
+  .cmd-overlay {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background-color: rgba(4, 13, 20, 0.85) !important;
+    animation: fadeInCmdMobile 0.2s ease-out !important;
+  }
+  .cmd-palette {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background-color: rgba(12, 21, 36, 0.95) !important;
+  }
+}
+
+@keyframes fadeInCmdMobile {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

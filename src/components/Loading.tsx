@@ -37,6 +37,11 @@ const Loading = ({ percent }: { percent: number }) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
+    // Skip canvas animation on mobile to save CPU/GPU during boot
+    if (window.innerWidth <= 1024) {
+      return;
+    }
+
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
@@ -153,7 +158,7 @@ const Loading = ({ percent }: { percent: number }) => {
           <div className="loader-card-border-ring"></div>
 
           <div className="loader-profile-image-container">
-            <img src="/profile.jpg" alt="Kshitij Sinha" className="loader-profile-image" />
+            <img src="/profile.webp" alt="Kshitij Sinha" className="loader-profile-image" width={165} height={165} loading="eager" />
             <div className="loader-profile-ring"></div>
             <div className="loader-profile-glow"></div>
           </div>
