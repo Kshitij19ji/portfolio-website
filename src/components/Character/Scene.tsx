@@ -13,6 +13,7 @@ import {
 } from "./utils/mouseUtils";
 import setAnimations from "./utils/animationUtils";
 import { setProgress } from "../Loading";
+import { setCharTimeline, setAllTimeline } from "../utils/GsapScroll";
 
 const Scene = () => {
   const canvasDiv = useRef<HTMLDivElement | null>(null);
@@ -33,7 +34,9 @@ const Scene = () => {
         let progress = setProgress((value) => setLoading(value));
         setTimeout(() => {
           progress.loaded().then(() => {
-             // Let the loading screen exit naturally
+            // Initialize scroll animations on mobile (without 3D model)
+            setCharTimeline(null, null as any);
+            setAllTimeline();
           });
         }, 1500);
         return;

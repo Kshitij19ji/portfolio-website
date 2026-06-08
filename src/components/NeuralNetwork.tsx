@@ -6,6 +6,10 @@ const NeuralNetwork = () => {
     useEffect(() => {
         const canvas = canvasRef.current;
         if (!canvas) return;
+
+        // Skip heavy particle animation on mobile
+        if (window.innerWidth <= 1024) return;
+
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
 
