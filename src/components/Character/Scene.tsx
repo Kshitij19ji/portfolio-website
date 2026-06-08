@@ -31,8 +31,9 @@ const Scene = () => {
         alpha: true,
         antialias: true,
       });
+      const isMobile = window.innerWidth <= 1024;
       renderer.setSize(container.width, container.height);
-      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio, 1.5));
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1;
       canvasDiv.current.appendChild(renderer.domElement);
@@ -108,6 +109,15 @@ const Scene = () => {
       }
       const animate = () => {
         requestAnimationFrame(animate);
+        
+        // Mobile performance optimization: skip rendering if off-screen
+        if (isMobile && landingDiv) {
+          const rect = landingDiv.getBoundingClientRect();
+          if (rect.bottom < 0) {
+            return; // Skip everything when off-screen
+          }
+        }
+
         if (headBone) {
           handleHeadRotation(
             headBone,
