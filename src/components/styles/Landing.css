@@ -171,8 +171,10 @@
 .landing-intro {
   position: absolute;
   z-index: 9;
-  top: 12%;
+  top: 8%;
   left: 0;
+  width: 100%;
+  text-align: center;
 }
 
 .landing-intro h2 {
@@ -198,11 +200,14 @@
 
 .landing-info {
   position: absolute;
-  right: 50%;
-  transform: translateX(50%);
-  bottom: 40px;
-  top: inherit;
+  left: 0;
+  bottom: 25px;
+  width: 100%;
   z-index: 9;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .landing-info h3 {
@@ -340,6 +345,8 @@ h2.landing-info-h2 {
     left: auto;
     right: 66%;
     transform: translate(0%, -50%);
+    text-align: left;
+    width: auto;
   }
 
   .landing-info {
@@ -350,6 +357,8 @@ h2.landing-info-h2 {
     transform: translate(0%, -50%);
     right: auto;
     left: 66%;
+    width: auto;
+    align-items: flex-start;
   }
 }
 
