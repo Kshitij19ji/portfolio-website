@@ -169,7 +169,17 @@ const Scene = () => {
     }
   }, []);
 
-  const isMobileView = typeof window !== "undefined" && window.innerWidth <= 1024;
+  const [isMobileView, setIsMobileView] = useState(
+    typeof window !== "undefined" && window.innerWidth <= 1024
+  );
+
+  useEffect(() => {
+    const handleResizeView = () => {
+      setIsMobileView(window.innerWidth <= 1024);
+    };
+    window.addEventListener("resize", handleResizeView);
+    return () => window.removeEventListener("resize", handleResizeView);
+  }, []);
 
   return (
     <>
