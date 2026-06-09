@@ -23,24 +23,24 @@ const Scene = () => {
 
   const [character, setChar] = useState<THREE.Object3D | null>(null);
   useEffect(() => {
+    const isMobile = window.innerWidth <= 1024;
+    if (isMobile) {
+      let progress = setProgress((value) => setLoading(value));
+      setTimeout(() => {
+        progress.loaded().then(() => {
+          // Initialize scroll animations on mobile (without 3D model)
+          setCharTimeline(null, null as any);
+          setAllTimeline();
+        });
+      }, 1500);
+      return () => {};
+    }
+
     if (canvasDiv.current) {
       let rect = canvasDiv.current.getBoundingClientRect();
       let container = { width: rect.width, height: rect.height };
       const aspect = container.width / container.height;
       const scene = sceneRef.current;
-
-      const isMobile = window.innerWidth <= 1024;
-      if (isMobile) {
-        let progress = setProgress((value) => setLoading(value));
-        setTimeout(() => {
-          progress.loaded().then(() => {
-            // Initialize scroll animations on mobile (without 3D model)
-            setCharTimeline(null, null as any);
-            setAllTimeline();
-          });
-        }, 1500);
-        return;
-      }
 
       const renderer = new THREE.WebGLRenderer({
         alpha: true,
